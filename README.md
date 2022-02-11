@@ -21,7 +21,7 @@ It takes advantage of ByBit exchange because limit order has a rebate fee of -0.
     * `BYBIT_TESTNET_API_KEY` - API key for **testnet**
     * `BYBIT_TESTNET_API_SECRET` - API secret for **testnet**
 * `cargo build --release` - Better to build and use release build, minimize time as much as possible apart from HTTP request we would be definitely doing
-* `cargo run -- -s XRPUSD -q 1 --testnet` or locate `quicky` binary and execute it like `quicky -s XRPUSD -q 1 --testnet`
+* `cargo run --release -- -s XRPUSD -q 1 --testnet` or locate `quicky` binary and execute it like `quicky -s XRPUSD -q 1 --testnet`
 
 # Usage
 
