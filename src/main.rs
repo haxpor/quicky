@@ -7,7 +7,7 @@ use clap::Parser;
 
 const TESTNET_URI_PREFIX: &str = "https://api-testnet.bybit.com";
 const URI_PREFIX: &str = "https://api.bybit.com";
-const DEFAULT_SL_PCNT: f64 = 0.2;
+const DEFAULT_SL_PCNT: f64 = 0.5;
 
 #[derive(Debug, Parser)]
 #[clap(author="by Wasin Thonkaew (wasin@wasin.io)")]
