@@ -202,7 +202,7 @@ fn api_send_quick_limit_order(context: &TradingContext, symbol: &str, qty: i64) 
     let curr_unix_timestamp_str = curr_unix_timestamp.to_string();
     let side = if is_buy_side {"Buy"} else {"Sell"};
     let qty_abs:u64 = qty.abs() as u64;
-    // TODO: also accept SL percentage from command line's argument
+
     let stop_loss_price:f64 = if is_buy_side { ((price * (1.0 - stop_loss_pcnt/100.0))*tick_step_value_roundup).round() / tick_step_value_roundup } else { ((price * (1.0 + stop_loss_pcnt/100.0))*tick_step_value_roundup).round() / tick_step_value_roundup };
 
     // TODO: add into hash, then sort alphabetically
