@@ -51,6 +51,13 @@ OPTIONS:
 * Able to switch to trade on mainnet and testnet via `--testnet` flag at command line
 * Trading context e.g. stop-loss percentage, (more to come in the future), etc are customized via command line's arguments
 
+# Update
+
+There is no more rebate fees for Bybit as the exchange announced new trading fees
+structure [here](https://help.bybit.com/hc/en-us/articles/4534682907545-Bybit-New-Trading-Fees-Structure)
+as of 3 March 2022. Anyhow, using this program to do a limit order can reduce your
+trading fees.
+
 # Disclaimer
 
 Use this program at your own risk. I take no responsibility towards damage or loss from using it
