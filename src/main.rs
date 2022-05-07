@@ -11,9 +11,6 @@ fn main() {
     // parse arguments via clap
     let cmd_args = CommandlineArgs::parse();
 
-    // TODO: include entered command arguments only if a certain flag has been used
-    println!("{:?}", cmd_args);
-
     // construct trading context with some which specified via command line's arguments,
     // and the less with default values.
     let trading_context = TradingContext {

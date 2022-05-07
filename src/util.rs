@@ -20,7 +20,7 @@ use regex::Regex;
 pub fn api_send_quick_limit_order(context: &TradingContext, symbol: &str, qty: i64) -> Result<(), StatusCode> {
     // We can get the price step from API, use
     // https://bybit-exchange.github.io/docs/inverse/?console#t-querysymbol
-    // but that would be too time consuming.
+    // but that would be too much of time consuming.
     if !context.tick_steps.contains_key(symbol) {
         return Err(StatusCode::InternalErrorNoTickStepAvailable);
     }
@@ -275,6 +275,9 @@ pub fn print_error_if_necessary(code: StatusCode) {
 
 /// Start measuring time. Suitable for wall-clock time measurement.
 /// This is mainly used to measure time of placing a limit order onto Bybit.
+///
+/// # Arguments
+/// * `start` - start time
 pub fn measure_start(start: &mut std::time::Instant) {
     *start = std::time::Instant::now();
 }
@@ -282,6 +285,10 @@ pub fn measure_start(start: &mut std::time::Instant) {
 /// Mark the end of the measurement of time performance.
 /// Return result in seconds, along with printing the elapsed time if `also_print`
 /// is `true`.
+///
+/// # Arguments
+/// * `start` - start time
+/// * `also_print` - whether or not to print elapsed time
 pub fn measure_end(start: &std::time::Instant, also_print: bool) -> f64 {
     let elapsed = start.elapsed().as_secs_f64();
     if also_print {
@@ -305,6 +312,9 @@ pub fn get_unix_timestamp_as_millis() -> u128 {
 
 /// Internal function to count the steps of the specified value.
 /// Ex. 0.0001 has 4 steps.
+///
+/// # Arguments
+/// * `value` - value to count the tick steps
 pub fn count_tick_steps(value: f64) -> i32 {
     if value >= 1.0 {
         return 0;
@@ -322,17 +332,27 @@ pub fn count_tick_steps(value: f64) -> i32 {
 }
 
 /// Get API key from `TradingContext`.
+///
+/// # Arguments
+/// * `context` - `TradingContext`
 pub fn get_api_key(context: &TradingContext) -> &str {
     if context.use_testnet { &context.testnet_api_key } else { &context.api_key }
 }
 
 /// Get API secret from `TradingContext`.
+///
+/// # Arguments
+/// * `context` - `TradingContext`
 pub fn get_api_secret(context: &TradingContext) -> &str {
     if context.use_testnet { &context.testnet_api_secret } else { &context.api_secret }
 }
 
 /// Form the full URI from specified `end_point` and whether or not it is meant
 /// to be using on testnet as specified by `use_testnet`.
+///
+/// # Arguments
+/// * `use_testnet` - whether or not to use testnet
+/// * `end_point` - end-point URL
 pub fn get_full_uri(use_testnet: bool, end_point: &str) -> String {
     format!("{prefix}{end_point}", prefix=if use_testnet { TESTNET_URI_PREFIX } else { URI_PREFIX }, end_point=end_point)
 }
